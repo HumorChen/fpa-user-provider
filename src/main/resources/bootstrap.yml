@@ -1,0 +1,50 @@
+
+dubbo:
+  registry:
+    address: nacos://49.235.226.68:8848
+  protocol:
+    name: dubbo
+    port: -1 #dubbo服务暴露的端口
+  scan:
+    #扫描的包名
+    base-packages: cn.freeprogramming.facade.impl
+  cloud:
+    # 要订阅的服务，订阅自己会被忽略
+    subscribed-services: fpa-user-provider
+
+
+spring:
+  application:
+    name: fpa-user-provider
+  # 启用哪个配置
+  profiles:
+    active: dev
+
+  datasource:
+    url: jdbc:mysql://49.235.226.68:3305/user?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: freeprogrammingtest
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    dbcp2:
+      max-idle: 16
+      min-idle: 4
+      max-wait-millis: 3000
+      initial-size: 4
+  cloud:
+    nacos:
+      # 账号密码
+      username: nacos
+      password: OS4FgUU8dGAEsRKE
+      # 配置中心
+      config:
+        server-addr: 49.235.226.68:8848
+        # 配置文件后缀名
+        file-extension: yml
+        auto-refresh: true
+
+      # 注册中心
+      discovery:
+        server-addr: 49.235.226.68:8848
+
+

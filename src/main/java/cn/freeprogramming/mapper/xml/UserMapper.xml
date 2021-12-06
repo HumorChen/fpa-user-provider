@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.freeprogramming.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="cn.freeprogramming.bean.User">
+        <id column="id" property="id" />
+        <result column="phone" property="phone" />
+        <result column="nickname" property="nickname" />
+        <result column="password" property="password" />
+        <result column="register_time" property="registerTime" />
+        <result column="real_name" property="realName" />
+        <result column="gender" property="gender" />
+        <result column="idcard" property="idcard" />
+        <result column="address" property="address" />
+        <result column="birthday" property="birthday" />
+        <result column="sign" property="sign" />
+        <result column="email" property="email" />
+        <result column="qq" property="qq" />
+        <result column="wechat" property="wechat" />
+        <result column="school_name" property="schoolName" />
+        <result column="last_online_time" property="lastOnlineTime" />
+        <result column="last_online_ip" property="lastOnlineIp" />
+        <result column="state" property="state" />
+        <result column="role" property="role" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, phone, nickname, password, register_time, real_name, gender, idcard, address, birthday, sign, email, qq, wechat, school_name, last_online_time, last_online_ip, state, role
+    </sql>
+
+</mapper>
