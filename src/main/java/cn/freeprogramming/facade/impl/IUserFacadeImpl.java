@@ -1,8 +1,7 @@
 package cn.freeprogramming.facade.impl;
 
-import cn.freeprogramming.enums.CommonErrorEnums;
 import cn.freeprogramming.bean.User;
-import cn.freeprogramming.enums.ErrorEnums;
+import cn.freeprogramming.enums.UserErrorEnums;
 import cn.freeprogramming.facade.IUserFacade;
 import cn.freeprogramming.params.LoginParam;
 import cn.freeprogramming.params.ModifySelfInfoParam;
@@ -36,19 +35,15 @@ public class IUserFacadeImpl implements IUserFacade {
      */
     @Override
     public R login(LoginParam loginParam) {
-        //参数校验器还没弄，先这样
-        BusinessAssert.notEmpty(loginParam.getUsername(), CommonErrorEnums.ILLEGAL_ARGUMENT);
-        BusinessAssert.notEmpty(loginParam.getPassword(), CommonErrorEnums.ILLEGAL_ARGUMENT);
         //查询出用户
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq(User.PHONE,loginParam.getUsername());
         queryWrapper.or();
         queryWrapper.eq(User.EMAIL,loginParam.getUsername());
         User user = userService.getOne(queryWrapper);
-        log.info("查询出的用户信息:",user);
-        BusinessAssert.isTrue(user != null, ErrorEnums.USER_NOT_FOUND);
+        BusinessAssert.isTrue(user != null, UserErrorEnums.USER_NOT_FOUND);
         //暂时忽略密码摘要
-        BusinessAssert.isTrue(user.getPassword().equals(loginParam.getPassword()),ErrorEnums.LOGIN_FAILED);
+        BusinessAssert.isTrue(user.getPassword().equals(loginParam.getPassword()), UserErrorEnums.LOGIN_FAILED);
         //假设登录成功
         return R.success("登录成功");
     }
