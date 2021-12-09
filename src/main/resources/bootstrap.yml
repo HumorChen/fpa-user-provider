@@ -40,7 +40,7 @@ spring:
     host: 49.235.226.68
     port: 6378
     #密码有就填没有就不要写
-    password: freeprogrammingtest\
+    password: freeprogrammingtest
     timeout: 3s
 
 
